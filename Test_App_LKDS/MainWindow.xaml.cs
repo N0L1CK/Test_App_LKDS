@@ -7,10 +7,8 @@ using System.Data;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Window = System.Windows.Window;
-using System.Collections;
-using System.Collections.Generic;
+
+
 
 namespace Test_App_LKDS
 {
@@ -38,7 +36,6 @@ namespace Test_App_LKDS
             try
             {
                 LoadOrganization("Select * FROM Organizations");
-                logger.Log("Select * FROM Organizations");
             }
             catch 
             {
@@ -75,7 +72,7 @@ namespace Test_App_LKDS
                 table = new DataTable();
                 adapter.Fill(table);
                 GridCompanys.ItemsSource = table.DefaultView;
-                logger.Log("Select * FROM Organizations");
+                logger.Log(command);
             }
         }
 
@@ -92,7 +89,7 @@ namespace Test_App_LKDS
                 table = new DataTable();
                 adapter.Fill(table);
                 GridEmploees.ItemsSource = table.DefaultView;
-                logger.Log("Select * FROM Employees");
+                logger.Log(command);
             }
 
             return Task.CompletedTask;
@@ -158,7 +155,7 @@ namespace Test_App_LKDS
             {
                 logger.Log("Error select company");
             }
-            LoadEmployees("Select Id, Name, Surname, Photo FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
+            LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
         }
 
         /// <summary>
