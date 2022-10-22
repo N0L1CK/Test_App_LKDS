@@ -13,10 +13,10 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class AddEmployees : Window
     {
-        int IdComp = 0;
-        List<Employee> EmployeeList = new List<Employee>(100);
-        string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
-        ILogger _logger;
+        readonly int IdComp = 0;
+        readonly List<Employee> EmployeeList = new List<Employee>(100);
+        readonly string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
+        readonly ILogger _logger;
         public AddEmployees(int idComp, ILogger logger)
         {
 

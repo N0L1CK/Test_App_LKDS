@@ -10,10 +10,10 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class EmployeeUpdater : Window
     {
-        string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
-        Employee Employee;
+        readonly string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
+        readonly Employee Employee;
 
-        ILogger logger = null;
+        readonly ILogger logger;
         public EmployeeUpdater(Employee employee, ILogger _logger)
         {
             logger = _logger;

@@ -9,10 +9,10 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class CompanyUpdater : Window
     {
-        string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
-        int Id;
-        string NameCompany;
-        ILogger _logger;
+        readonly string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
+        readonly int Id;
+        readonly string NameCompany;
+        readonly ILogger _logger;
         public CompanyUpdater(string nameCompany, int id, ILogger logger)
         {
             InitializeComponent();

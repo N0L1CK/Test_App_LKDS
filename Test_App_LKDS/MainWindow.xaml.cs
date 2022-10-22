@@ -7,8 +7,7 @@ using System.Data;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-
-
+using System.Globalization;
 
 namespace Test_App_LKDS
 {
@@ -17,13 +16,13 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         SqlDataAdapter adapter;
         DataTable table;
-        int SelectCompanyIndex = 0;
-        int SelectEmploeeIndex = 0;
+        private int SelectCompanyIndex = 0;
         const string path = "log.txt";
         readonly string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
-        TextLogger logger = new TextLogger(path);
+        readonly TextLogger logger = new TextLogger(path);
 
         public MainWindow()
         {
@@ -32,7 +31,7 @@ namespace Test_App_LKDS
             logger.Log("Start");
             GridCompanys.IsReadOnly = true;
             GridEmploees.IsReadOnly = true;
-            InitialDB initialDB = new InitialDB(logger);
+            _ = new InitialDB(logger);
             try
             {
                 LoadOrganization("Select * FROM Organizations");
@@ -42,20 +41,6 @@ namespace Test_App_LKDS
                 logger.Log("LoadOrganization error");
             }
             
-        }
-
-
-        /// <summary>
-        /// Проверка подключения к БД
-        /// </summary>
-        private async Task CheckConection(string connectionString) 
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                await connection.OpenAsync();
-                Console.WriteLine("Подключение открыто");
-            }
-            Console.WriteLine("Подключение закрыто...");
         }
 
 
@@ -136,7 +121,7 @@ namespace Test_App_LKDS
             }
             else 
             {
-                LoadEmployees("Select * FROM Employees");
+                LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
             }
         }
 
@@ -168,13 +153,13 @@ namespace Test_App_LKDS
             PhotoEmploee.Source = null;
             try
             {
-                SelectEmploeeIndex = (int)((DataRowView)GridEmploees.SelectedItems[0]).Row["Id"];
+                int SelectEmploeeIndex = (int)((DataRowView)GridEmploees.SelectedItems[0]).Row["Id"];
                 textName.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Name"];
                 textSurname.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Surname"];
             }
             catch (Exception) 
             {
-                SelectEmploeeIndex = 1;
+                
                 logger.Log("Error select employee");
             }
 
@@ -202,7 +187,7 @@ namespace Test_App_LKDS
         /// </summary>
         private void GridEmployees_GetPhoto() 
         {
-            string photo = null;
+            string photo;
             try
             {
                 photo = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Photo"];

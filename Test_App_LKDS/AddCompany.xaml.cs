@@ -13,9 +13,9 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class AddCompany : Window
     {
-        List<Company> CompanyList = new List<Company>(10);
-        string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
-        ILogger _logger;
+        readonly List<Company> CompanyList = new List<Company>(10);
+        readonly string NewconnectionString = ConfigurationManager.ConnectionStrings["NewConnection"].ConnectionString;
+        readonly ILogger _logger;
         public AddCompany(ILogger logger)
         {
             
