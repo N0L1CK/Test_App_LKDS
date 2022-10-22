@@ -1,0 +1,21 @@
+﻿<Window x:Class="Test_App_LKDS.EmployeeUpdater"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test_App_LKDS"
+        mc:Ignorable="d"
+        Title="EmployeeUpdater" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF9A9A9A">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="68,103,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameEmployee" HorizontalAlignment="Left" Margin="68,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" Height="30" FontSize="20" />
+        <TextBox x:Name="SurnameEmployee" HorizontalAlignment="Left" Margin="68,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="30" FontSize="20"/>
+        <TextBox x:Name="PhotoEmployee" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" Height="30" FontSize="20" Margin="68,220,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="68,153,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="68,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Фото"/>
+        <Button x:Name="ButtonUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="360,349,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonUpdate_Click"/>
+        <Button x:Name="ButtonCancel" Content="Отмена" HorizontalAlignment="Center" Margin="0,349,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonCancel_Click"/>
+        <Button x:Name="ButtonDelene" Content="Delete" HorizontalAlignment="Left" Margin="32,349,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FFD83030" Click="ButtonDelene_Click"/>
+
+    </Grid>
+</Window>

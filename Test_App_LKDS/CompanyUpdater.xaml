@@ -1,0 +1,16 @@
+﻿<Window x:Class="Test_App_LKDS.CompanyUpdater"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test_App_LKDS"
+        mc:Ignorable="d"
+        Title="CompanyUpdater" Height="200" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF9A9A9A">
+        <TextBox x:Name="CompanyName" HorizontalAlignment="Center" Margin="0,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="420" Height="30" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,41,0,0" TextWrapping="Wrap" Text="Название Компании" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="ButtonUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="336,120,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="Button_Click"/>
+        <Button x:Name="ButtonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="167,120,0,10" VerticalAlignment="Top" Width="140" Height="30" Click="Button_Click_1"/>
+        <Button x:Name="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Margin="10,120,0,10" VerticalAlignment="Top" Background="#FFD84343" Width="120" Height="30" Click="Button_Click_2"/>
+    </Grid>
+</Window>
