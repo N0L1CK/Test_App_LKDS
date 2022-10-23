@@ -113,17 +113,21 @@ namespace Test_App_LKDS
         /// </summary>
         private void SearchEmploee_Click(object sender, RoutedEventArgs e)
         {
+            
             if (SearchName.Text.Length > 1)
             {
                 LoadEmployees("Select * FROM Employees WHERE "
                     + "Employees.OrganizationId = " + SelectCompanyIndex.ToString()
                     + " AND Employees.Name = '" + SearchName.Text.ToString()
                     + "' OR Employees.Surname = '" + SearchName.Text.ToString() + "'");
+                
             }
             else 
             {
                 LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
+                
             }
+            SearchName.Text = "";
         }
 
 

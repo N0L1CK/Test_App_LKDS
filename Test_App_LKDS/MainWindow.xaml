@@ -26,7 +26,7 @@
         </DataGrid>
         <Button x:Name="AddCompanys" Content="Добавить компанию" HorizontalAlignment="Left" Margin="10,0,0,10" Width="194" VerticalAlignment="Bottom" Height="30" Click="AddCompanys_Click"/>
         <Image x:Name="PhotoEmploee" Margin="973,97,52,299" RenderTransformOrigin="0.494,0.482"  Stretch="Uniform"/>
-        <TextBox x:Name="SearchName" Margin="535,25,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Height="19" HorizontalAlignment="Left" Width="242"/>
+        <TextBox x:Name="SearchName" Margin="535,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" HorizontalAlignment="Left" Width="242"/>
         <Button x:Name="SearchEmploee" Content="Search" HorizontalAlignment="Left" Margin="782,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.501,0.512" Height="20" Width="92" Click="SearchEmploee_Click"/>
         <Rectangle HorizontalAlignment="Left" Height="464" Stroke="Black" VerticalAlignment="Center" Width="212" Margin="955,0,10,0"/>
         <Button x:Name="AddEmployee" Content="Добавить сотрудников" HorizontalAlignment="Left" Margin="720,0,0,10" VerticalAlignment="Bottom" Width="194" Height="30" Click="AddEmployee_Click"/>
