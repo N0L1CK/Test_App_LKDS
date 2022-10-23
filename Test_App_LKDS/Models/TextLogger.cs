@@ -7,7 +7,7 @@ namespace Test_App_LKDS
     public class TextLogger : ILogger
     {
         string Path { get; set; }
-        public TextLogger(string path) 
+        public TextLogger(string path)
         {
             Path = path;
 
@@ -17,7 +17,7 @@ namespace Test_App_LKDS
             using (StreamWriter logger = new StreamWriter(Path, true))
             {
                 logger.WriteLine(DateTime.Now.ToLongTimeString() + " - " + eventName);
-                
+
             }
         }
     }

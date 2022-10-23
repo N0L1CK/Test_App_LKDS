@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Windows;
-using System.Threading.Tasks;
 using System.Data;
-using System.Windows.Input;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Globalization;
 
 namespace Test_App_LKDS
 {
@@ -16,7 +15,7 @@ namespace Test_App_LKDS
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         SqlDataAdapter adapter;
         DataTable table;
         private int SelectCompanyIndex = 0;
@@ -26,7 +25,7 @@ namespace Test_App_LKDS
 
         public MainWindow()
         {
-            
+
             InitializeComponent();
             logger.Log("Start");
             GridCompanys.IsReadOnly = true;
@@ -35,13 +34,13 @@ namespace Test_App_LKDS
             try
             {
                 LoadOrganization("Select * FROM Organizations");
-                
+
             }
             catch (Exception ex)
             {
                 logger.Log(ex.Message.ToString());
             }
-            
+
         }
 
 
@@ -81,9 +80,9 @@ namespace Test_App_LKDS
             return Task.CompletedTask;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
 
@@ -116,19 +115,19 @@ namespace Test_App_LKDS
         /// </summary>
         private void SearchEmploee_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (SearchName.Text.Length > 1)
             {
                 LoadEmployees("Select * FROM Employees WHERE "
                     + "Employees.OrganizationId = " + SelectCompanyIndex.ToString()
                     + " AND Employees.Name = '" + SearchName.Text.ToString()
                     + "' OR Employees.Surname = '" + SearchName.Text.ToString() + "'");
-                
+
             }
-            else 
+            else
             {
                 LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
-                
+
             }
             SearchName.Text = "";
         }
@@ -165,9 +164,9 @@ namespace Test_App_LKDS
                 textName.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Name"];
                 textSurname.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Surname"];
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                
+
                 logger.Log(ex.Message.ToString());
             }
 
@@ -193,7 +192,7 @@ namespace Test_App_LKDS
         /// <summary>
         /// Загрузка Фото Выбраного сотрудника 
         /// </summary>
-        private void GridEmployees_GetPhoto() 
+        private void GridEmployees_GetPhoto()
         {
             string photo;
             try
@@ -207,7 +206,7 @@ namespace Test_App_LKDS
             }
             BitmapImage myBitmapImage = new BitmapImage();
             myBitmapImage.BeginInit();
-            try 
+            try
             {
                 myBitmapImage.UriSource = new Uri(photo);
             }
@@ -235,7 +234,8 @@ namespace Test_App_LKDS
                 employee.Name = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Name"];
                 employee.Surname = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Surname"];
                 employee.Photo = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Photo"];
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.Log(ex.Message.ToString());
             }

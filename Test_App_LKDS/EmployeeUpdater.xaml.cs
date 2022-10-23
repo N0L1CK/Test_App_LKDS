@@ -26,9 +26,9 @@ namespace Test_App_LKDS
 
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            OperationsEmployee("UPDATE Employees SET Name = '" + NameEmployee.Text 
-                + "', Surname = '" + SurnameEmployee.Text 
-                + "', Photo = '" + PhotoEmployee.Text 
+            OperationsEmployee("UPDATE Employees SET Name = '" + NameEmployee.Text
+                + "', Surname = '" + SurnameEmployee.Text
+                + "', Photo = '" + PhotoEmployee.Text
                 + "' WHERE Id = " + Employee.Id);
 
 
@@ -44,7 +44,7 @@ namespace Test_App_LKDS
         private void ButtonDelene_Click(object sender, RoutedEventArgs e)
         {
             OperationsEmployee("DELETE FROM Employees WHERE Id = " + Employee.Id);
-  
+
             Close();
         }
         private void OperationsEmployee(string command)

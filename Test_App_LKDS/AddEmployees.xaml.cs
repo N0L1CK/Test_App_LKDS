@@ -38,13 +38,14 @@ namespace Test_App_LKDS
             {
                 try
                 {
-                    if (item.Name != null && item.Name.Length > 0 || 
+                    if (item.Name != null && item.Name.Length > 0 ||
                         item.Surname != null && item.Surname.Length > 0)
                         EmployeesInsert("INSERT INTO Employees (Name, Surname, Photo, OrganizationId) " +
-                            "VALUES ('" + item.Name + "', '" + item.Surname + "', '" + 
+                            "VALUES ('" + item.Name + "', '" + item.Surname + "', '" +
                             item.Photo + "', '" + IdComp + "')");
 
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     _logger.Log(ex.Message.ToString());
                 }

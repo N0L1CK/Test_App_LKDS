@@ -1,7 +1,7 @@
-﻿using System.Data.SqlClient;
-using System.Windows;
+﻿using System;
 using System.Configuration;
-using System;
+using System.Data.SqlClient;
+using System.Windows;
 
 namespace Test_App_LKDS
 {
@@ -62,7 +62,7 @@ namespace Test_App_LKDS
         /// <summary>
         /// Функция исполения sql запросов
         /// </summary>
-        private void OperationsCompany(string command) 
+        private void OperationsCompany(string command)
         {
             using (SqlConnection connection = new SqlConnection(NewconnectionString))
             {
@@ -71,6 +71,6 @@ namespace Test_App_LKDS
                 someCommand.ExecuteNonQuery();
                 _logger.Log(command);
             }
-        }   
+        }
     }
 }

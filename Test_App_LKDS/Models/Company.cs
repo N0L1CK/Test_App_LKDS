@@ -6,7 +6,7 @@ namespace Test_App_LKDS
     {
         public string Name { get; set; }
 
-        public Company(string name) 
+        public Company(string name)
         {
             Name = name;
         }

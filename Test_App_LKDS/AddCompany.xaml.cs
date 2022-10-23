@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 
 namespace Test_App_LKDS
@@ -19,17 +18,17 @@ namespace Test_App_LKDS
         readonly ILogger _logger;
         public AddCompany(ILogger logger)
         {
-            
+
             InitializeComponent();
             _logger = logger;
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 10; i++)
             {
                 Company company = new Company(null);
                 CompanyList.Add(company);
             }
             GridAddCompany.ItemsSource = CompanyList;
 
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,7 +46,7 @@ namespace Test_App_LKDS
                     {
                         CompanyInsert("INSERT INTO Organizations (Name) VALUES ('" + item.Name + "')");
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
                         _logger.Log(ex.Message.ToString());
                     }
