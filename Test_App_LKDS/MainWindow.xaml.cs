@@ -242,7 +242,7 @@ namespace Test_App_LKDS
 
             EmployeeUpdater employeeUpdater = new EmployeeUpdater(employee, logger);
             employeeUpdater.Show();
-            employeeUpdater.Closed += AddCompany_Closed;
+            employeeUpdater.Closed += AddEmploees_Closed;
         }
 
 
