@@ -35,10 +35,11 @@ namespace Test_App_LKDS
             try
             {
                 LoadOrganization("Select * FROM Organizations");
+                
             }
-            catch 
+            catch (Exception ex)
             {
-                logger.Log("LoadOrganization error");
+                logger.Log(ex.Message.ToString());
             }
             
         }
@@ -136,9 +137,9 @@ namespace Test_App_LKDS
             {
                 SelectCompanyIndex = (int)((DataRowView)GridCompanys.SelectedItems[0]).Row["Id"];
             }
-            catch 
+            catch (Exception ex)
             {
-                logger.Log("Error select company");
+                logger.Log(ex.Message.ToString());
             }
             LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
         }
@@ -157,10 +158,10 @@ namespace Test_App_LKDS
                 textName.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Name"];
                 textSurname.Text = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Surname"];
             }
-            catch (Exception) 
+            catch (Exception ex) 
             {
                 
-                logger.Log("Error select employee");
+                logger.Log(ex.Message.ToString());
             }
 
             GridEmployees_GetPhoto();
@@ -192,9 +193,9 @@ namespace Test_App_LKDS
             {
                 photo = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Photo"];
             }
-            catch 
+            catch (Exception ex)
             {
-                logger.Log("Error load photo");
+                logger.Log(ex.Message.ToString());
                 photo = null;
             }
             BitmapImage myBitmapImage = new BitmapImage();
@@ -203,8 +204,9 @@ namespace Test_App_LKDS
             {
                 myBitmapImage.UriSource = new Uri(photo);
             }
-            catch 
+            catch (Exception ex)
             {
+                logger.Log(ex.Message.ToString());
                 photo = "Image/1241.jpg";
                 myBitmapImage.UriSource = new Uri(photo, UriKind.Relative);
             }
@@ -226,9 +228,9 @@ namespace Test_App_LKDS
                 employee.Name = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Name"];
                 employee.Surname = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Surname"];
                 employee.Photo = (string)((DataRowView)GridEmploees.SelectedItems[0]).Row["Photo"];
-            } catch 
+            } catch (Exception ex)
             {
-                logger.Log("GridEmploees_DoubleClick error");
+                logger.Log(ex.Message.ToString());
             }
 
             EmployeeUpdater employeeUpdater = new EmployeeUpdater(employee, logger);

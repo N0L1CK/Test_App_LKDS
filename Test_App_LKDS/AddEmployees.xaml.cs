@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -37,12 +38,15 @@ namespace Test_App_LKDS
             {
                 try
                 {
-                    if (item.Name != null && item.Name.Length > 0 || item.Surname != null && item.Surname.Length > 0)
-                        EmployeesInsert("INSERT INTO Employees (Name, Surname, Photo, OrganizationId) VALUES ('"
-                            + item.Name + "', '" + item.Surname + "', '" + item.Photo + "', '" + IdComp + "')");
-                } catch 
+                    if (item.Name != null && item.Name.Length > 0 || 
+                        item.Surname != null && item.Surname.Length > 0)
+                        EmployeesInsert("INSERT INTO Employees (Name, Surname, Photo, OrganizationId) " +
+                            "VALUES ('" + item.Name + "', '" + item.Surname + "', '" + 
+                            item.Photo + "', '" + IdComp + "')");
+
+                } catch (Exception ex)
                 {
-                    System.Console.WriteLine("Error add Employee");
+                    _logger.Log(ex.Message.ToString());
                 }
             }
             EmployeeList.Clear();

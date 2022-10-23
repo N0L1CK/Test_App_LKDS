@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -36,17 +37,20 @@ namespace Test_App_LKDS
             Close();
         }
 
-        private void GridAddCompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach (var item in CompanyList) 
+            foreach (var item in CompanyList)
             {
                 if (item.Name != null && item.Name.Length > 1)
-                    CompanyInsert("INSERT INTO Organizations (Name) VALUES ('" + item.Name + "')");
+                    try
+                    {
+                        CompanyInsert("INSERT INTO Organizations (Name) VALUES ('" + item.Name + "')");
+                    }
+                    catch (Exception ex) 
+                    {
+                        _logger.Log(ex.Message.ToString());
+                    }
             }
             Close();
         }

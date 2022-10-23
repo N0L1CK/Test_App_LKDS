@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Windows;
 using System.Configuration;
+using System;
 
 namespace Test_App_LKDS
 {
@@ -48,11 +49,11 @@ namespace Test_App_LKDS
                 OperationsCompany("DELETE FROM Employees WHERE OrganizationId = " + Id);
 
                 OperationsCompany("DELETE FROM Organizations WHERE Id = " + Id);
-
+                _logger.Log("Company " + CompanyName.Text + " deleted");
             }
-            finally 
+            catch (Exception ex)
             {
-                _logger.Log("Company "+ CompanyName.Text + " deleted");
+                _logger.Log(ex.Message.ToString());
             }
             Close();
         }

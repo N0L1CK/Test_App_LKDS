@@ -111,7 +111,7 @@
     <Compile Include="EmployeeUpdater.xaml.cs">
       <DependentUpon>EmployeeUpdater.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Intefaces\ILogger.cs" />
+    <Compile Include="interface\ILogger.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\InitialDB.cs" />

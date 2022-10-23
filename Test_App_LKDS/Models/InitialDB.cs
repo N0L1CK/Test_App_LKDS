@@ -20,8 +20,8 @@ namespace Test_App_LKDS
         {
             try
             {
-                InitializeDB(connectionString);
-                _logger.Log("InitializeDB");
+                InitializeDB(connectionString, "CREATE DATABASE companys_db");
+                
             }
             catch (Exception e) 
             { 
@@ -32,8 +32,9 @@ namespace Test_App_LKDS
 
             try
             {
-                InitializeOrganizationTable(NewconnectionString);
-                _logger.Log("InitializeOrganizationTable");
+                InitializeDB(NewconnectionString, "CREATE TABLE Organizations " +
+                    "(Id INT PRIMARY KEY IDENTITY,Name NVARCHAR(100) NOT NULL)");
+                
             }
             catch (Exception e)
             {
@@ -41,8 +42,10 @@ namespace Test_App_LKDS
             }
             try
             {
-                InitializeEmployeeTable(NewconnectionString);
-                _logger.Log("InitializeEmployeeTable");
+                InitializeDB(NewconnectionString, "CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY, " +
+                    "Name NVARCHAR(100) NOT NULL, Surname NVARCHAR(100) NOT NULL, Photo NVARCHAR(100), " +
+                    "OrganizationId INT NOT NULL FOREIGN KEY REFERENCES Organizations(Id))");
+                
             }
             catch (Exception e) 
             {
@@ -52,47 +55,20 @@ namespace Test_App_LKDS
 
             
         }
-        private void InitializeDB(string connectionString)
+        private void InitializeDB(string connectionString, string sqlCommand)
         {
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand();
-                command.CommandText = "CREATE DATABASE companys_db";
+                command.CommandText = sqlCommand;
                 command.Connection = connection;
                 command.ExecuteNonQuery();
-                Console.WriteLine("База дынных создана");
                 connection.Close();
-                
+                _logger.Log(sqlCommand);
             }
            
-        }
-        private void InitializeOrganizationTable(string connectionString)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand();
-                command.CommandText = "CREATE TABLE Organizations (Id INT PRIMARY KEY IDENTITY,Name NVARCHAR(100) NOT NULL)";
-                command.Connection = connection;
-                command.ExecuteNonQuery();
-                Console.WriteLine("Таблица Organizations создана");
-                connection.Close();
-            }
-        }
-        private void InitializeEmployeeTable(string connectionString)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand();
-                command.CommandText = "CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY, Name NVARCHAR(100) NOT NULL, Surname NVARCHAR(100) NOT NULL, Photo NVARCHAR(100), OrganizationId INT NOT NULL FOREIGN KEY REFERENCES Organizations(Id))";
-                command.Connection = connection;
-                command.ExecuteNonQuery();
-                Console.WriteLine("Таблица Employees создана");
-                connection.Close();
-            }
         }
     }
 }

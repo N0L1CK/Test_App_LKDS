@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddCompany" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF9A9A9A">
-        <DataGrid x:Name="GridAddCompany" d:ItemsSource="{d:SampleData ItemCount=10}" Margin="36,10,34,83" AutoGenerateColumns="False" SelectionChanged="GridAddCompany_SelectionChanged" DisplayMemberPath="Name">
+        <DataGrid x:Name="GridAddCompany" d:ItemsSource="{d:SampleData ItemCount=10}" Margin="36,10,34,83" AutoGenerateColumns="False" DisplayMemberPath="Name">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Компании" Width="700"/>
             </DataGrid.Columns>
