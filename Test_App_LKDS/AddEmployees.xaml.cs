@@ -59,7 +59,7 @@ namespace Test_App_LKDS
             {
                 connection.Open();
                 SqlCommand com = new SqlCommand(command, connection);
-                int number = com.ExecuteNonQuery();
+                com.ExecuteNonQuery();
                 _logger.Log(command);
 
             }
