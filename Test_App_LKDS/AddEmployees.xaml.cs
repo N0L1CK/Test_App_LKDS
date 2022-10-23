@@ -68,6 +68,7 @@ namespace Test_App_LKDS
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            EmployeeList.Clear();
             Close();
         }
     }

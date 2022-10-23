@@ -33,6 +33,7 @@ namespace Test_App_LKDS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            CompanyList.Clear();
             Close();
         }
 
@@ -51,6 +52,7 @@ namespace Test_App_LKDS
                         _logger.Log(ex.Message.ToString());
                     }
             }
+            CompanyList.Clear();
             Close();
         }
         private Task CompanyInsert(string command)
