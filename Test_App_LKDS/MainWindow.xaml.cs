@@ -97,7 +97,10 @@ namespace Test_App_LKDS
             addCompany.Closed += AddCompany_Closed;
         }
 
-
+        private void AddEmploees_Closed(object sender, EventArgs e)
+        {
+            LoadEmployees("Select * FROM Employees WHERE Employees.OrganizationId = " + SelectCompanyIndex.ToString());
+        }
 
         /// <summary>
         /// Обновление списка компании при закрытии View добавления компаний
@@ -181,7 +184,7 @@ namespace Test_App_LKDS
         {
             AddEmployees addEmployees = new AddEmployees(SelectCompanyIndex, logger);
             addEmployees.Show();
-            addEmployees.Closed += AddCompany_Closed;
+            addEmployees.Closed += AddEmploees_Closed;
         }
 
 
