@@ -120,8 +120,8 @@ namespace Test_App_LKDS
             {
                 LoadEmployees("Select * FROM Employees WHERE "
                     + "Employees.OrganizationId = " + SelectCompanyIndex.ToString()
-                    + " AND Employees.Name = '" + SearchName.Text.ToString()
-                    + "' OR Employees.Surname = '" + SearchName.Text.ToString() + "'");
+                    + " AND Employees.Name LIKE '%" + SearchName.Text.ToString()
+                    + "%' OR Employees.Surname LIKE '%" + SearchName.Text.ToString() + "%'");
 
             }
             else
